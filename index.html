@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interfaz - Elevador Digital (Edificio 20 pisos, A/B)</title>
+  <!--
+    Archivo: index.html
+    Propósito: Estructura HTML semántica, accesible y organizada para la interfaz
+    del elevador digital. Este archivo contiene la estructura estática; el diseño
+    (CSS) y la lógica (JavaScript) se mantienen en archivos separados.
+
+    Notas para la compañía:
+    - HTML semántico y etiquetas ARIA para accesibilidad.
+    - Contenedores modulares y clases BEM-like para facilitar el mantenimiento.
+    - Plantillas y data-attributes para que JS genere dinámicamente los 20 pisos.
+  -->
+
+  <!-- En producción vincular a un archivo CSS externo, por ejemplo: styles/main.css -->
+  <link rel="stylesheet" href="stylo.css">
+</head>
+<body>
+  <!-- Header profesional -->
+  <header class="site-header" role="banner">
+    <div class="container header__inner">
+      <h1 class="brand">Interfaz de Control - Elevador Digital</h1>
+      <p class="brand__subtitle">Edificio: 20 pisos • Departamentos: A / B • Interfaz comercial</p>
+    </div>
+  </header>
+
+  <!-- Main: contiene la UI principal dividida en panel de control y vista del edificio -->
+  <main id="main" class="main container" role="main">
+
+    <!-- Panel lateral con controles y listado de pisos -> ideal para ventas y demostraciones -->
+    <aside class="control-panel" aria-labelledby="panel-title" role="complementary">
+      <h2 id="panel-title" class="control-panel__title">Panel de Llamado</h2>
+
+      <!-- Estado general del ascensor -->
+      <section class="status" aria-live="polite" aria-atomic="true">
+        <h3 class="status__title">Estado</h3>
+        <div id="elevator-status" class="status__value">Sin llamadas</div>
+      </section>
+
+      <!-- Zona donde aparecerá la lista de pisos (generada dinámicamente por JS) -->
+      <section id="floors-list" class="floors" aria-label="Lista de pisos">
+        <!-- Teclado virtual para llamar a apartamentos -->
+<section class="virtual-keypad" aria-labelledby="keypad-title">
+  <h3 id="keypad-title" class="keypad__title">Teclado Virtual</h3>
+  
+  <!-- Pantalla de entrada -->
+  <div class="keypad-display" id="keypad-display">---</div>
+  
+  <!-- Teclas numéricas -->
+  <div class="keypad-buttons">
+    <button class="keypad-btn" data-value="1">1</button>
+    <button class="keypad-btn" data-value="2">2</button>
+    <button class="keypad-btn" data-value="3">3</button>
+    <button class="keypad-btn" data-value="4">4</button>
+    <button class="keypad-btn" data-value="5">5</button>
+    <button class="keypad-btn" data-value="6">6</button>
+    <button class="keypad-btn" data-value="7">7</button>
+    <button class="keypad-btn" data-value="8">8</button>
+    <button class="keypad-btn" data-value="9">9</button>
+    <button class="keypad-btn" data-value="0">0</button>
+    
+    <!-- Teclas de letras para departamentos -->
+    <button class="keypad-btn" data-value="A">A</button>
+    <button class="keypad-btn" data-value="B">B</button>
+    
+    <!-- Botones especiales -->
+    <button class="keypad-btn call-btn" id="btn-call">Llamar</button>
+    <button class="keypad-btn delete-btn" id="btn-delete">Borrar</button>
+  </div>
+</section>
+
+        <!-- Placeholder para usuarios sin JavaScript activo -->
+        <noscript>
+          <p class="noscript-note">La lista de pisos requiere JavaScript para mostrarse correctamente.</p>
+        </noscript>
+      </section>
+
+      <!-- Controles adicionales para demostración comercial -->
+      <section class="controls">
+        <h3 class="controls__title">Controles de demostración</h3>
+        <div class="controls__row">
+          <label for="demo-speed">Velocidad de simulación</label>
+          <select id="demo-speed" name="demo-speed" class="select">
+            <option value="fast">Rápido</option>
+            <option value="normal" selected>Normal</option>
+            <option value="slow">Lento</option>
+          </select>
+        </div>
+
+        <div class="controls__row">
+          <label for="show-doors">Animar puertas</label>
+          <input type="checkbox" id="show-doors" name="show-doors" checked />
+        </div>
+
+      </section>
+
+    </aside>
+
+    <!-- Área principal con la representación visual del ascensor y la pantalla -->
+    <section class="visual-area" aria-labelledby="visual-title">
+      <h2 id="visual-title" class="sr-only">Visualización del ascensor</h2>
+
+      <!-- Display de pantalla principal (destinado a la presentación en venta) -->
+      <div class="display" role="status" aria-live="polite">
+        <div class="display__panel">
+          <div id="display-target" class="display__target">Seleccion de apartamento </div>
+          <div id="display-sub" class="display__sub">— Sistema preparado para demostración comercial —</div>
+        </div>
+      </div>
+
+      <!-- Representación esquemática del edificio (opcional, puede contener SVG o imagen) -->
+      <figure class="building" aria-hidden="true">
+        <!-- Aquí se puede incluir un SVG con la fachada y un ascensor animable -->
+        <!-- <img src="assets/building-diagram.svg" alt="Diagrama del edificio" /> -->
+      </figure>
+
+      <!-- Registro de llamadas recientes (útil en demo y para el equipo de ventas) -->
+      <section id="call-log" class="call-log" aria-label="Registro de llamadas recientes">
+        <h3 class="call-log__title">Registro</h3>
+        <ul id="call-log-list" class="call-log__list">
+          <!-- Entradas añadidas dinámicamente -->
+        </ul>
+      </section>
+    </section>
+
+  </main>
+
+  <!-- Footer con información comercial y contacto -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p>Demo comercial • Interfaz desarrollada por Emanuel Ferreira</p>
+      <p class="footer__notes">Contacto: <a href="mailto:emanuel@example.com">emanuel@example.com</a></p>
+    </div>
+  </footer>
+
+  <!-- En producción vincular a un archivo JS externo, por ejemplo: scripts/main.js -->
+  <script src="scripts/main.js" defer></script>
+
+  <!-- Comentarios para desarrolladores:
+       - El archivo scripts/main.js debe encargarse de generar los 20 pisos (20..1),
+         creando elementos <article class="floor"> y botones con data-floor y data-unit.
+       - Debe manejar el aria-live del #elevator-status y el registro en #call-log-list.
+       - Mantener separacion de responsabilidades (HTML estructura, CSS estilo, JS lógica).
+  -->
+</body>
+<script type="text/javascript" src="archivo.js"></script>
+</html>

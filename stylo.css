@@ -1,0 +1,280 @@
+/* Archivo: styles/main.css */
+/* Propósito: Estilo moderno y profesional para la interfaz del elevador digital */
+
+:root {
+  --primary-color: #4b6cff;
+  --primary-hover: #314bce;
+  --background: #f0f4ff;
+  --panel-bg: rgba(255, 255, 255, 0.9);
+  --panel-shadow: rgba(0, 0, 0, 0.15);
+  --text-color: #222;
+  --status-bg: #dfe7ff;
+  --status-active: #c6ffd3;
+  --border-radius: 12px;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #e8ecf3, #c9d6ff);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header.site-header {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px var(--panel-shadow);
+}
+
+header .brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+header .brand__subtitle {
+  font-size: 1rem;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+main.main {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+  padding: 30px 0;
+  flex-wrap: wrap;
+}
+
+.control-panel {
+  flex: 1 1 350px;
+  background: var(--panel-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px var(--panel-shadow);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.control-panel__title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.status {
+  background: var(--status-bg);
+  padding: 12px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.floors .floor {
+  background: #f5f7ff;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.floor__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+button.btn {
+  flex: 1 1 48%;
+  padding: 12px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button.btn:hover {
+  background: var(--primary-hover);
+}
+
+.visual-area {
+  flex: 2 1 600px;
+  background: var(--panel-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px var(--panel-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.display {
+  background: var(--status-bg);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.display__sub {
+  font-size: 0.9rem;
+  font-weight: normal;
+  margin-top: 5px;
+  color: #555;
+}
+
+.call-log {
+  background: #f0f4ff;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.call-log__title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.call-log__list li {
+  margin-bottom: 5px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.05);
+}
+
+.controls .controls__row {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select.select {
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+input[type=checkbox] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+footer.site-footer {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  main.main { flex-direction: column; gap: 20px; }
+}
+
+
+/* --- Teclado virtual --- */
+.virtual-keypad {
+  background: var(--panel-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px var(--panel-shadow);
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.keypad__title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.keypad-display {
+  background: #fff;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.keypad-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.keypad-btn {
+  padding: 12px 0;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.keypad-btn:hover {
+  background: var(--primary-hover);
+}
+
+.call-btn {
+  background: #2ecc71; /* verde para llamar */
+  grid-column: span 2;
+}
+.call-btn:hover {
+  background: #27ae60;
+}
+
+.delete-btn {
+  background: #e74c3c; /* rojo para borrar */
+  grid-column: span 2;
+}
+.delete-btn:hover {
+  background: #c0392b;
+}
+
+@media (max-width: 500px) {
+  .keypad-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
